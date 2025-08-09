@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de envio das fotos do diário de bordo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 14px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .input-field {
+            width: 60%;
+            padding: 8px;
+            margin: 10px 0;
+            font-size: 14px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .file-input {
+            display: inline-block;
+            padding: 10px;
+        }
+
+        .photo-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .photo-container img {
+            width: 32%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 30px;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Sistema de envio das fotos do diário de bordo</h1>
+        <p>Escolha até 6 fotos para incluir no diário de bordo.</p>
+
+        <div class="form-group">
+            <label for="titulo">IDENTIFICAÇÃO:</label>
+            <input type="text" id="titulo" class="input-field" placeholder="Título do PDF (Identificação)">
+        </div>
+
+        <div class="form-group">
+            <label for="turma">Turma:</label>
+            <input type="text" id="turma" class="input-field" placeholder="Turma (Subtítulo)">
+        </div>
+
+        <form id="upload-form">
+            <div class="photo-container">
+                <input type="file" class="file-input" id="foto1" accept="image/*">
+                <input type="file" class="file-input" id="foto2" accept="image/*">
+                <input type="file" class="file-input" id="foto3" accept="image/*">
+            </div>
+            <div class="photo-container">
+                <input type="file" class="file-input" id="foto4" accept="image/*">
+                <input type="file" class="file-input" id="foto5" accept="image/*">
+                <input type="file" class="file-input" id="foto6" accept="image/*">
+            </div>
+        </form>
+
+        <div class="form-group">
+            <button class="button" id="gerar-pdf">Gerar PDF</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Sistema Diário de Bordo. Todos os direitos reservados.
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+    <script>
+        document.getElementById('gerar-pdf').addEventListener('click', function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Obter dados do formulário
+            const titulo = document.getElementById('titulo').value;
+            const turma = document.getElementById('turma').value;
+
+            // Adicionar título e subtítulo
+            doc.setFontSize(14);
+            doc.text(titulo, 105, 20, { align: 'center' });
+            doc.setFontSize(12);
+            doc.text(turma, 105, 30, { align: 'center' });
+
+            // Função para adicionar imagem ao PDF
+            function addImageToPDF(imgData, x, y) {
+                doc.addImage(imgData, 'JPEG', x, y, 60, 60);  // Ajustando o tamanho da imagem
+            }
+
+            // Coletando as imagens e enviando para o Imgbb
+            const fotos = [];
+            for (let i = 1; i <= 6; i++) {
+                const fotoInput = document.getElementById('foto' + i);
+                if (fotoInput.files.length > 0) {
+                    const file = fotoInput.files[0];
+                    const reader = new FileReader();
+                    reader.onloadend = function () {
+                        fotos.push(reader.result);
+                        if (fotos.length === 6) {
+                            // Adiciona as imagens ao PDF
+                            let x = 10;
+                            let y = 40;
+                            fotos.forEach((imgData, index) => {
+                                if (index === 3) {
+                                    x = 10;
+                                    y = 100;
+                                }
+                                addImageToPDF(imgData, x, y);
+                                x += 70;  // Mudando a posição horizontal das imagens
+                            });
+
+                            // Adicionar data e hora no rodapé
+                            const dataHora = new Date();
+                            doc.setFontSize(8);
+                            doc.text(`Gerado em: ${dataHora.toLocaleString()}`, 105, 280, { align: 'center' });
+
+                            // Salvar PDF
+                            doc.save('diario_de_bordo.pdf');
+                        }
+                    };
+                    reader.readAsDataURL(file); // Converte para base64
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
