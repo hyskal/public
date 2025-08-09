@@ -1,97 +1,175 @@
 {
-  "titulo": "Roteiro para Aula Prática: [Inserir Título Aqui]",
-  "tema": "[Inserir o tema da aula aqui]",
-  "dados_aula": {
-    "data": "(Preencher)",
-    "horario_inicio": "(Preencher)",
-    "horario_termino": "(Preencher)",
-    "local": "(Preencher)"
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Roteiro de Aula Prática",
+    "description": "Este é o modelo de especificação para gerar roteiros de aula prática de análise clínica.",
+    "version": "v1.0.0"
   },
-  "objetivo": "[Inserir o objetivo da aula aqui]",
-  "materiais_recursos": [
-    {"material": "[Material 1]", "quantidade": "[Quantidade, se necessário]"},
-    {"material": "[Material 2]", "quantidade": "[Quantidade, se necessário]"},
-    {"material": "[Material 3]", "quantidade": "[Quantidade, se necessário]"}
-  ],
-  "procedimento": [
+  "servers": [
     {
-      "etapa": 1,
-      "descricao": "Organizar todos os materiais na bancada e retirar o cassete de teste do sachê.",
-      "detalhes": "Certificar-se de que todos os materiais necessários estejam dispostos de maneira ordenada e acessível."
-    },
-    {
-      "etapa": 2,
-      "descricao": "Higienizar as mãos e calçar as luvas de procedimento.",
-      "detalhes": "Realizar a higiene das mãos de acordo com as normas de biossegurança."
-    },
-    {
-      "etapa": 3,
-      "descricao": "Fazer a assepsia do dedo escolhido com álcool 70% e esperar secar.",
-      "detalhes": "A assepsia é fundamental para garantir a precisão do teste e evitar contaminações."
-    },
-    {
-      "etapa": 4,
-      "descricao": "Realizar a punção digital com a lanceta e descartá-la imediatamente.",
-      "detalhes": "A lanceta deve ser descartada imediatamente após o uso na caixa de descarte de pérfuro-cortantes."
-    },
-    {
-      "etapa": 5,
-      "descricao": "Pressionar o dedo para formar uma gota de sangue e coletar a amostra com a pipeta capilar.",
-      "detalhes": "Coletar a amostra com cuidado para garantir o volume adequado de sangue."
-    },
-    {
-      "etapa": 6,
-      "descricao": "Dispensar o sangue total no poço da amostra do cassete de teste.",
-      "detalhes": "Certificar-se de que a amostra foi depositada corretamente."
-    },
-    {
-      "etapa": 7,
-      "descricao": "Adicionar 3 gotas da solução diluente no poço da amostra.",
-      "detalhes": "Utilizar o frasco de solução diluente para adicionar a quantidade correta no teste."
-    },
-    {
-      "etapa": 8,
-      "descricao": "Acionar o cronômetro para marcar 15 minutos.",
-      "detalhes": "O cronômetro ajudará a controlar o tempo de reação necessário para a leitura do resultado."
-    },
-    {
-      "etapa": 9,
-      "descricao": "Após 15 minutos, fazer a leitura do resultado.",
-      "detalhes": "Não exceder o tempo de 20 minutos para evitar a leitura incorreta."
-    },
-    {
-      "etapa": 10,
-      "descricao": "Descartar os materiais utilizados em descarte apropriado para resíduos biológicos.",
-      "detalhes": "Todos os materiais biológicos e cortantes devem ser descartados de acordo com as normas de segurança."
-    },
-    {
-      "etapa": 11,
-      "descricao": "Organizar e higienizar a bancada.",
-      "detalhes": "Após o uso, garantir que a bancada esteja limpa e organizada para o próximo uso."
+      "url": "https://api.exemplo.com"
     }
   ],
-  "observacoes": [
-    {
-      "pergunta": "Qual a importância do álcool secar completamente antes da punção?",
-      "resposta": "[Inserir a resposta aqui]"
-    },
-    {
-      "pergunta": "O que o resultado reagente indica?",
-      "resposta": "[Inserir a resposta aqui]"
-    },
-    {
-      "pergunta": "Por que é importante não ler o resultado após 20 minutos?",
-      "resposta": "[Inserir a resposta aqui]"
+  "paths": {
+    "/gerar-roteiro": {
+      "post": {
+        "summary": "Gera um roteiro completo de aula prática para procedimentos laboratoriais",
+        "operationId": "gerarRoteiro",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoteiroAulaPratica"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Roteiro de aula prática gerado com sucesso",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RoteiroAulaPratica"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Dados inválidos ou faltando"
+          }
+        }
+      }
     }
-  ],
-  "resultado": {
-    "nao_reagente": "Aparecimento de apenas uma banda colorida na área de controle (C).",
-    "reagente": "Aparecimento de duas bandas coloridas, uma na área de controle (C) e outra na área de teste (T).",
-    "invalido": "Não surgimento da banda na área de controle (C). O teste deve ser repetido."
   },
-  "conclusao": "[Inserir os pontos de conclusão da aula aqui]",
-  "referencias": [
-    "Adicionar referência ao manual do fabricante do kit: Eco Diagnóstica - HCV Ab ECO Teste - TR.0024C"
-  ],
-  "assinatura": "(Preencher)"
+  "components": {
+    "schemas": {
+      "RoteiroAulaPratica": {
+        "type": "object",
+        "properties": {
+          "titulo": {
+            "type": "string",
+            "example": "Roteiro para Aula Prática: Teste Rápido de HCV"
+          },
+          "tema": {
+            "type": "string",
+            "example": "Detecção de Anticorpos contra o Vírus da Hepatite C (HCV)"
+          },
+          "dados_aula": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "string",
+                "format": "date",
+                "example": "2025-08-01"
+              },
+              "horario_inicio": {
+                "type": "string",
+                "format": "time",
+                "example": "08:00"
+              },
+              "horario_termino": {
+                "type": "string",
+                "format": "time",
+                "example": "10:00"
+              },
+              "local": {
+                "type": "string",
+                "example": "Laboratório de Aulas Práticas de Análises Clínicas (CETEP/LNAB)"
+              }
+            }
+          },
+          "objetivo": {
+            "type": "string",
+            "example": "Realizar a coleta de sangue total por punção digital e o procedimento de teste rápido para a detecção de anticorpos anti-HCV."
+          },
+          "materiais_recursos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "material": {
+                  "type": "string",
+                  "example": "Kit HCV Ab ECO Teste (cassete de teste, frasco de solução diluente)"
+                },
+                "quantidade": {
+                  "type": "string",
+                  "example": "1 unidade"
+                }
+              }
+            }
+          },
+          "procedimento": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "etapa": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "descricao": {
+                  "type": "string",
+                  "example": "Organizar todos os materiais na bancada e retirar o cassete de teste do sachê."
+                },
+                "detalhes": {
+                  "type": "string",
+                  "example": "Certificar-se de que todos os materiais necessários estejam dispostos de maneira ordenada e acessível."
+                }
+              }
+            }
+          },
+          "observacoes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "pergunta": {
+                  "type": "string",
+                  "example": "Qual a importância do álcool secar completamente antes da punção?"
+                },
+                "resposta": {
+                  "type": "string",
+                  "example": "A secagem completa do álcool evita qualquer interferência no processo de punção e contaminação da amostra."
+                }
+              }
+            }
+          },
+          "resultado": {
+            "type": "object",
+            "properties": {
+              "nao_reagente": {
+                "type": "string",
+                "example": "Aparecimento de apenas uma banda colorida na área de controle (C)."
+              },
+              "reagente": {
+                "type": "string",
+                "example": "Aparecimento de duas bandas coloridas, uma na área de controle (C) e outra na área de teste (T)."
+              },
+              "invalido": {
+                "type": "string",
+                "example": "Falta da banda na área de controle (C). O teste deve ser repetido."
+              }
+            }
+          },
+          "conclusao": {
+            "type": "string",
+            "example": "Discutir a importância de seguir o procedimento correto e a interpretação dos resultados do teste rápido de HCV."
+          },
+          "referencias": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "Adicionar referência ao manual do fabricante do kit: Eco Diagnóstica - HCV Ab ECO Teste - TR.0024C"
+            }
+          },
+          "assinatura": {
+            "type": "string",
+            "example": "(Preencher)"
+          }
+        }
+      }
+    }
+  }
 }
