@@ -1,0 +1,97 @@
+{
+  "titulo": "Roteiro para Aula Prática: [Inserir Título Aqui]",
+  "tema": "[Inserir o tema da aula aqui]",
+  "dados_aula": {
+    "data": "(Preencher)",
+    "horario_inicio": "(Preencher)",
+    "horario_termino": "(Preencher)",
+    "local": "(Preencher)"
+  },
+  "objetivo": "[Inserir o objetivo da aula aqui]",
+  "materiais_recursos": [
+    {"material": "[Material 1]", "quantidade": "[Quantidade, se necessário]"},
+    {"material": "[Material 2]", "quantidade": "[Quantidade, se necessário]"},
+    {"material": "[Material 3]", "quantidade": "[Quantidade, se necessário]"}
+  ],
+  "procedimento": [
+    {
+      "etapa": 1,
+      "descricao": "Organizar todos os materiais na bancada e retirar o cassete de teste do sachê.",
+      "detalhes": "Certificar-se de que todos os materiais necessários estejam dispostos de maneira ordenada e acessível."
+    },
+    {
+      "etapa": 2,
+      "descricao": "Higienizar as mãos e calçar as luvas de procedimento.",
+      "detalhes": "Realizar a higiene das mãos de acordo com as normas de biossegurança."
+    },
+    {
+      "etapa": 3,
+      "descricao": "Fazer a assepsia do dedo escolhido com álcool 70% e esperar secar.",
+      "detalhes": "A assepsia é fundamental para garantir a precisão do teste e evitar contaminações."
+    },
+    {
+      "etapa": 4,
+      "descricao": "Realizar a punção digital com a lanceta e descartá-la imediatamente.",
+      "detalhes": "A lanceta deve ser descartada imediatamente após o uso na caixa de descarte de pérfuro-cortantes."
+    },
+    {
+      "etapa": 5,
+      "descricao": "Pressionar o dedo para formar uma gota de sangue e coletar a amostra com a pipeta capilar.",
+      "detalhes": "Coletar a amostra com cuidado para garantir o volume adequado de sangue."
+    },
+    {
+      "etapa": 6,
+      "descricao": "Dispensar o sangue total no poço da amostra do cassete de teste.",
+      "detalhes": "Certificar-se de que a amostra foi depositada corretamente."
+    },
+    {
+      "etapa": 7,
+      "descricao": "Adicionar 3 gotas da solução diluente no poço da amostra.",
+      "detalhes": "Utilizar o frasco de solução diluente para adicionar a quantidade correta no teste."
+    },
+    {
+      "etapa": 8,
+      "descricao": "Acionar o cronômetro para marcar 15 minutos.",
+      "detalhes": "O cronômetro ajudará a controlar o tempo de reação necessário para a leitura do resultado."
+    },
+    {
+      "etapa": 9,
+      "descricao": "Após 15 minutos, fazer a leitura do resultado.",
+      "detalhes": "Não exceder o tempo de 20 minutos para evitar a leitura incorreta."
+    },
+    {
+      "etapa": 10,
+      "descricao": "Descartar os materiais utilizados em descarte apropriado para resíduos biológicos.",
+      "detalhes": "Todos os materiais biológicos e cortantes devem ser descartados de acordo com as normas de segurança."
+    },
+    {
+      "etapa": 11,
+      "descricao": "Organizar e higienizar a bancada.",
+      "detalhes": "Após o uso, garantir que a bancada esteja limpa e organizada para o próximo uso."
+    }
+  ],
+  "observacoes": [
+    {
+      "pergunta": "Qual a importância do álcool secar completamente antes da punção?",
+      "resposta": "[Inserir a resposta aqui]"
+    },
+    {
+      "pergunta": "O que o resultado reagente indica?",
+      "resposta": "[Inserir a resposta aqui]"
+    },
+    {
+      "pergunta": "Por que é importante não ler o resultado após 20 minutos?",
+      "resposta": "[Inserir a resposta aqui]"
+    }
+  ],
+  "resultado": {
+    "nao_reagente": "Aparecimento de apenas uma banda colorida na área de controle (C).",
+    "reagente": "Aparecimento de duas bandas coloridas, uma na área de controle (C) e outra na área de teste (T).",
+    "invalido": "Não surgimento da banda na área de controle (C). O teste deve ser repetido."
+  },
+  "conclusao": "[Inserir os pontos de conclusão da aula aqui]",
+  "referencias": [
+    "Adicionar referência ao manual do fabricante do kit: Eco Diagnóstica - HCV Ab ECO Teste - TR.0024C"
+  ],
+  "assinatura": "(Preencher)"
+}
