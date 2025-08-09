@@ -1,0 +1,177 @@
+{
+  "imunologia": [
+    {
+      "produto": "Imuno-LÁTEX – Wama Diagnóstica",
+      "descricao": "Kit para pesquisa de fator reumatóide em amostras de soro, utilizando partículas de látex revestidas com IgG humana por aglutinação indireta.",
+      "link": "https://www.wamadiagnostica.com.br/reagentes/imuno-latex/"
+    },
+    {
+      "produto": "Imunohematologia – Controllab",
+      "descricao": "Reagentes para imuno-hematologia, incluindo soros para metodologias convencionais.",
+      "link": "https://www.controllab.com/wp-content/uploads/bula_IHH_752_753_754_IHS_799_800_801_2021_04.pdf"
+    },
+    {
+      "produto": "Imunohematologia – Saúde Direta",
+      "descricao": "Documentação técnica sobre imuno-hematologia eritrocitária, abordando segurança imunológica da transfusão.",
+      "link": "https://www.saudedireta.com.br/docsupload/1332105017Imunohematologia.pdf"
+    },
+    {
+      "produto": "Imunohematologia Laboratorial – Biblioteca Virtual em Saúde",
+      "descricao": "Diretrizes sobre bula de reagentes para imuno-hematologia, incluindo instruções de uso e interpretação de resultados.",
+      "link": "https://bvsms.saude.gov.br/bvs/publicacoes/imuno_hematologia_laboratorial.pdf"
+    }
+  ],
+  "fita_reagente_urina": [
+    {
+      "produto": "Tira Reagente para Urinálise 11H 500 – Vida Diagnóstica",
+      "descricao": "Tira reagente para urinálise, destinada à determinação semiquantitativa de diversos analitos na urina humana.",
+      "link": "https://consultas.anvisa.gov.br/api/consulta/produtos/25351455485202230/anexo/T25770670/nomeArquivo/Tiras%2BReagentes%2Bpara%2BUrin%C3%A1lise%2B11H%2B500%2B-%2B09_2024%2BVIDA.pdf"
+    },
+    {
+      "produto": "Tira Reagente de Urinálises – BioSystems NE",
+      "descricao": "Instruções de uso para tira reagente de urinálises, para detecção rápida de analitos múltiplos em urina humana.",
+      "link": "https://www.biosystemsne.com.br/files/product/97d3f87122791dd2c4b9bf5e0ef85750.pdf"
+    },
+    {
+      "produto": "URIT 14 G – FocoVet",
+      "descricao": "Bula da tira reagente URIT 14 G para urina, composta por tira plástica afixada com papel absorvente e almofada de calibração.",
+      "link": "https://focovet.com.br/wp-content/uploads/2019/12/BULA-14-G-PORTUGU%C3%8AS-10-12-19.pdf"
+    },
+    {
+      "produto": "Teste Rápido de Gravidez por HCG em Bastão – Anvisa",
+      "descricao": "Imunoensaio de fluxo lateral rápido para detecção qualitativa de gonadotrofina coriônica humana (hCG) na urina.",
+      "link": "https://consultas.anvisa.gov.br/api/consulta/produtos/25351334427201897/anexo/T17786746/nomeArquivo/Instru%C3%A7%C3%A3o%20de%20uso%20-%20FHC-103H%20ACRO.pdf?Authorization=Guest"
+    },
+    {
+      "produto": "Teste Rápido para Detecção de Múltiplas Drogas em Cassete – Biovalent",
+      "descricao": "Teste de triagem de urina para detecção de níveis elevados de drogas específicas, como Anfetaminas e Morfina.",
+      "link": "https://biovalent.com.br/wp-content/uploads/2024/09/1.-Multi-Drug-12-drugs-Cassette-ACRO-CE-Portuguese-PI-180809.pdf"
+    }
+  ],
+  "hematologia_corantes": [
+    {
+      "produto": "Corante May-Grünwald – Newprov Produtos para Laboratório",
+      "descricao": "Bula do corante May-Grünwald, utilizado para coloração de esfregaços sanguíneos.",
+      "link": "https://www.gov.br/ebserh-intensifica-assistencia-a-distancia-como-estrategia-de-combate-a-covid-19/pt-br/hospitais-universitarios/regiao-centro-oeste/hu-ufgd/acesso-a-informacao/pops-protocolos-e-processos/gad/pop-uacap-079-hematologia-confeccao-manual-de-esfregaco-e-coloracao-de-may-gruwald-e-giemsa.pdf"
+    },
+    {
+      "produto": "Corante May-Grünwald – Quibasa Química Básica",
+      "descricao": "Informações sobre o corante May-Grünwald, utilizado em técnicas laboratoriais.",
+      "link": "https://quibasa.bioclin.com.br/anexos/INSTRUCOES_MAY_GRUNWALD.pdf"
+    }
+  ],
+  "imuno_hematologia": [
+    {
+      "produto": "Reagentes para Imunohematologia – Fresenius Kabi",
+      "descricao": "Instrução de uso de soros raros para metodologia convencional em imuno-hematologia.",
+      "link": "https://www.fresenius-kabi.com/content/dam/fresenius-kabi/br/documents/bulas/linha-de-reagentes-convencionais/Soro%20Anti-Jka%20%28REF%20346821%29%20e%20Anti-Jkb%20%28REF%20346921%29%20-%20IFU%20212126700%20rev.07%20%28180%20KB%29.pdf"
+    },
+    {
+      "produto": "Curso de Boas Práticas no Ciclo do Sangue – Anvisa",
+      "descricao": "Documentação técnica sobre procedimentos hemoterápicos e imuno-hematologia.",
+      "link": "https://www.gov.br/anvisa/pt-br/assuntos/sangue/capacitacoes/arquivos/bp-sangue/7445json-file-1/%40%40download/file/7445json-file-1.pdf"
+    },
+    {
+      "produto": "Imunohematologia – Saúde Direta",
+      "descricao": "Informações sobre imuno-hematologia eritrocitária, abordando segurança imunológica da transfusão.",
+      "link": "https://www.saudedireta.com.br/docsupload/1332105017Imunohematologia.pdf"
+    },
+    {
+      "produto": "Soro Anti-A – Gold Analisa",
+      "descricao": "Reagentes para determinação da tipagem sanguínea A no sistema ABO por aglutinação.",
+      "link": "https://www.goldanalisa.com.br/images/upload/3d4ae50776962350eec337aa0baf3b735c883e85bb5c86b3d1df38f819b8b004.pdf"
+    },
+    {
+      "produto": "Tipagem Sanguínea ABO/RH – Portal Gov.br",
+      "descricao": "Procedimento de tipagem sanguínea com amostra de sangue total (ABO/Rh) e interpretação de resultados.",
+      "link": "https://www.gov.br/ebserh/pt-br/hospitais-universitarios/regiao-centro-oeste/hu-ufgd/acesso-a-informacao/pops-protocolos-e-processos/gerencia-de-atencao-a-saude-gas/laboratorio-de-analises-clinicas/anexo-portaria-106-pop-ulacp-034-imunologia-tipagem-sanguinea-abo-rhd-2021-2023-validado-svssp.pdf/@@download/file/1000"
+    },
+    {
+      "produto": "Reagentes para Imunohematologia (Anti-M e Anti-N) – Fresenius Kabi",
+      "descricao": "Instrução de uso para identificação de antígenos M e N em glóbulos vermelhos.",
+      "link": "https://www.fresenius-kabi.com/content/dam/fresenius-kabi/br/documents/bulas/linha-de-reagentes-convencionais/Soroclone%20Anti-M%20(REF%20346721)%20e%20Anti-N%20(REF%20342821)%20-%20IFU%20212120700%20rev.09%20(180%20KB).pdf.coredownload.inline.pdf"
+    },
+    {
+      "produto": "Imuno-hematologia - Controllab",
+      "descricao": "Documento sobre a qualificação do controle interno e boas práticas de laboratório para ensaios de imuno-hematologia.",
+      "link": "https://controllab.com/wp-content/uploads/Microsoft-Word-bula_IHH_829_830_831_IHS_871_872_873_2022_02-imunohematologia_ihh-829__ihs-871_ihh-830__ihs-872_ihh-831__ihs-873_2022_2530-2.pdf"
+    },
+    {
+      "produto": "Curso Avançado de Boas Práticas - OPAS/OMS",
+      "descricao": "Formação para profissionais da área de sangue sobre gestão de qualidade e boas práticas de fabricação em serviços de sangue.",
+      "link": "https://campus.paho.org/pt-br/curso/curso-avancado-de-boas-praticas-de-fabricacao-para-servicos-de-sangue"
+    }
+  ],
+  "testes_rapidos": [
+    {
+      "produto": "Teste Rápido de Tipagem Sanguínea (ABO/Rh) – Biocon",
+      "descricao": "Imunoensaio cromatográfico rápido para detecção de antígenos dos grupos A, B e Rh em amostras de sangue humano.",
+      "link": "https://consultas.anvisa.gov.br/api/consulta/produtos/25351540506202050/anexo/T14837872/nomeArquivo/Tipagem+Sangu%C3%ADnea+Rapid+Test+C%C3%B3d+OABD-D+%282%29.pdf?Authorization=Guest"
+    },
+    {
+      "produto": "Teste Rápido de Sangue Oculto (FOB) – Ebram",
+      "descricao": "Imunoensaio qualitativo para detecção de sangue oculto humano nas fezes, para diagnóstico in vitro.",
+      "link": "http://www.ebram.com/assets/820.intuse.pdf"
+    },
+    {
+      "produto": "Teste Rápido de VDRL – Labtest",
+      "descricao": "Teste não treponêmico para determinação qualitativa e semi-quantitativa de anticorpos para sífilis (reaginas) em soro ou plasma.",
+      "link": "https://labtest.com.br/wp-content/uploads/2016/09/VDRL_119_Port.pdf"
+    },
+    {
+      "produto": "Teste Rápido de HCV – Biovalent",
+      "descricao": "Imunoensaio cromatográfico de fluxo lateral para a detecção de anticorpos antivírus da hepatite C (IgG, IgM, IgA) em soro, plasma ou sangue total humano.",
+      "link": "https://biovalent.com.br/wp-content/uploads/2023/01/PI-R0024C-HCV-AB-PLUS.pdf"
+    },
+    {
+      "produto": "Teste Rápido de HIV 1/2 – Cepalab",
+      "descricao": "Imunoensaio cromatográfico rápido para detecção qualitativa de anticorpos do vírus da Imunodeficiência Humana (HIV) tipo 1 e tipo 2.",
+      "link": "https://cepalab.com.br/wp-content/uploads/2022/12/Instrucao-de-Uso-HIV.pdf"
+    },
+    {
+      "produto": "Teste Rápido de VHS",
+      "descricao": "Procedimento para o teste de Velocidade de Hemossedimentação (VHS), que mede a velocidade de sedimentação das hemácias.",
+      "link": "https://pt.scribd.com/document/615357258/POP-021-VELOCIDADE-DE-HEMOSSEDIMENTACAO-VHS"
+    },
+    {
+      "produto": "VDRL PRONTO PARA USO - Bioclin",
+      "descricao": "Método de triagem para detecção de reaginas da sífilis, utilizando uma reação de floculação.",
+      "link": "https://quibasa.bioclin.com.br/anexos/INSTRUCOES_VDRL.pdf"
+    },
+    {
+      "produto": "Teste Rápido OnSite™ HCV Ab Plus Combo - Biovalent",
+      "descricao": "Imunoensaio cromatográfico de fluxo lateral para a detecção de anticorpos antivírus da hepatite C (IgG, IgM, IgA) em soro, plasma ou sangue total humano.",
+      "link": "https://biovalent.com.br/wp-content/uploads/2023/01/PI-R0024C-HCV-AB-PLUS.pdf"
+    },
+    {
+      "produto": "Teste Rápido em cassete de Sífilis - Anvisa",
+      "descricao": "Ensaio imunocromatográfico para detecção qualitativa de anticorpos específicos anti-Treponema pallidum (TP) em amostras de sangue total, soro ou plasma.",
+      "link": "https://consultas.anvisa.gov.br/api/consulta/produtos/25351516377201945/anexo/T14575323/nomeArquivo/ISY-402Juschek%20ACRO%20Portuguese.pdf?Authorization=Guest"
+    },
+    {
+      "produto": "Teste Rápido Dengue Ag - Epimed",
+      "descricao": "Teste rápido para detecção do antígeno circulante da Dengue em amostras humanas de soro, plasma e sangue total.",
+      "link": "https://epimed.com.br/wp-content/uploads/2020/04/bula-dengue-AG-maio-22.pdf"
+    },
+    {
+      "produto": "Teste Rápido de Dengue IgG/IgM - Ebram",
+      "descricao": "Imunoensaio para a detecção de anticorpos IgG e IgM do vírus da Dengue no sangue total, soro ou plasma humano.",
+      "link": "http://www.ebram.com/assets/811.intuse.pdf"
+    },
+    {
+      "produto": "Teste Rápido em Cassete de HIV 1.2 – GlobalX (Anvisa)",
+      "descricao": "Imunoensaio cromatográfico rápido para a detecção qualitativa de anticorpos do Vírus da Imunodeficiência Humana (HIV) tipo 1 e tipo 2.",
+      "link": "https://consultas.anvisa.gov.br/api/consulta/produtos/25351652381202352/anexo/T25669015/nomeArquivo/BULA_GLOBALX_HIV_complete_06.09.24_v.2_final.pdf?Authorization=Guest"
+    },
+    {
+      "produto": "Teste Rápido de Chagas Ab Combo - Biovalent",
+      "descricao": "Imunoensaio cromatográfico de fluxo lateral para a detecção qualitativa de IgG anti-Trypanosoma cruzi em soro, plasma ou sangue total.",
+      "link": "https://biovalent.com.br/wp-content/uploads/2024/10/PI-R0171C-BIO-PT-Rev-F3.0.pdf"
+    },
+    {
+      "produto": "Teste Rápido de Dengue NS1 - Ebram",
+      "descricao": "Imunoensaio cromatográfico rápido para a detecção qualitativa de Antígeno NS1 do vírus da Dengue em sangue total, soro e plasma.",
+      "link": "http://ebram.com/assets/812.intuse.pdf"
+    }
+  ]
+}
