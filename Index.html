@@ -127,6 +127,23 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
     <script>
+        // Função para enviar imagem para o Imgbb e obter o link
+        function uploadImageToImgbb(file) {
+            const formData = new FormData();
+            formData.append('image', file);
+            return fetch('https://api.imgbb.com/1/upload?key=f9591cd104f8f8d63b70608ea95da7d8', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                return data.data.url; // URL da imagem hospedada
+            })
+            .catch(error => {
+                console.error('Erro no upload da imagem:', error);
+            });
+        }
+
         document.getElementById('gerar-pdf').addEventListener('click', function() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -148,38 +165,40 @@
 
             // Coletando as imagens e enviando para o Imgbb
             const fotos = [];
+            const files = [];
             for (let i = 1; i <= 6; i++) {
                 const fotoInput = document.getElementById('foto' + i);
                 if (fotoInput.files.length > 0) {
                     const file = fotoInput.files[0];
-                    const reader = new FileReader();
-                    reader.onloadend = function () {
-                        fotos.push(reader.result);
-                        if (fotos.length === 6) {
-                            // Adiciona as imagens ao PDF
-                            let x = 10;
-                            let y = 40;
-                            fotos.forEach((imgData, index) => {
-                                if (index === 3) {
-                                    x = 10;
-                                    y = 100;
-                                }
-                                addImageToPDF(imgData, x, y);
-                                x += 70;  // Mudando a posição horizontal das imagens
-                            });
-
-                            // Adicionar data e hora no rodapé
-                            const dataHora = new Date();
-                            doc.setFontSize(8);
-                            doc.text(`Gerado em: ${dataHora.toLocaleString()}`, 105, 280, { align: 'center' });
-
-                            // Salvar PDF
-                            doc.save('diario_de_bordo.pdf');
-                        }
-                    };
-                    reader.readAsDataURL(file); // Converte para base64
+                    files.push(file);
                 }
             }
+
+            // Realiza o upload das imagens para o Imgbb e aguarda as URLs
+            Promise.all(files.map(file => uploadImageToImgbb(file)))
+                .then(urls => {
+                    let x = 10;
+                    let y = 40;
+                    urls.forEach((url, index) => {
+                        if (index === 3) {
+                            x = 10;
+                            y = 100;
+                        }
+                        addImageToPDF(url, x, y);
+                        x += 70;  // Mudando a posição horizontal das imagens
+                    });
+
+                    // Adicionar data e hora no rodapé
+                    const dataHora = new Date();
+                    doc.setFontSize(8);
+                    doc.text(`Gerado em: ${dataHora.toLocaleString()}`, 105, 280, { align: 'center' });
+
+                    // Salvar PDF
+                    doc.save('diario_de_bordo.pdf');
+                })
+                .catch(error => {
+                    console.error('Erro ao gerar o PDF:', error);
+                });
         });
     </script>
 
