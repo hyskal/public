@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestão e Qualidade Laboratorial</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --text-color: #555;
+            --light-text-color: #f0f0f0;
+            --background-gradient: linear-gradient(135deg, #e3f2fd, #c3e3f3);
+            --glass-background: rgba(255, 255, 255, 0.6);
+            --flashcard-background: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(255, 255, 255, 0.4);
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --glass-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-gradient);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header {
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--glass-shadow);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .main-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 20px 40px;
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            margin: 40px 20px;
+        }
+
+        section:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--primary-color);
+            width: 100%;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 30px var(--shadow-color);
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        .figure-title, .figure-source {
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin: 5px 0;
+        }
+        
+        .figure-title {
+            font-weight: 600;
+        }
+        
+        .video-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .flashcards-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .flashcard {
+            display: none;
+            background: var(--flashcard-background);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px auto;
+            box-shadow: 0 4px 20px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 600px;
+            cursor: pointer;
+        }
+
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .flashcard.active {
+            display: block;
+        }
+
+        .flashcard-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .flashcard-button {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 24px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .flashcard-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .flashcard-button.active {
+            background-color: #5a6a7c;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .flashcard-question {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .flashcard-answer {
+            display: none;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--text-color);
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        .flashcard-question:hover {
+            text-decoration: underline;
+        }
+        
+        .highlight-box {
+            background: var(--flashcard-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+        
+        .highlight-box h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .source {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 40px;
+            text-align: center;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                margin: 20px;
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .flashcard-button {
+                padding: 10px 20px;
+            }
+            iframe {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Gestão e Qualidade Laboratorial</h1>
+    </header>
+
+    <div class="main-container">
+        <div class="image-container">
+            <img src="https://blog.mobimed.com.br/wp-content/uploads/2023/10/tipos-coleta-sangue-materiais-passo-a-passo-tecnicas.webp" alt="Técnica realizando coleta de sangue venoso">
+            <div class="figure-title">Figura 1 – Técnica realizando coleta de sangue venoso</div>
+            <div class="figure-source">Fonte: mobimed (2023)</div>
+        </div>
+
+        <section>
+            <h2>Introdução</h2>
+            <p>Quando pensamos em qualidade, é comum que nossa mente vá para aspectos técnicos. Lembre-se da última vez que comprou um fone de ouvido. Certamente, você analisou a durabilidade, o som, o conforto. No entanto, a percepção de qualidade não se resume apenas aos parâmetros técnicos, como o desempenho do produto. Muitas vezes, o que define a nossa escolha está diretamente ligado à sensação de confiança e à experiência afetiva – o toque da marca, o atendimento oferecido, o “sentir-se bem” com a compra.</p>
+            <p>Essa reflexão pode ser extrapolada para o campo dos serviços de saúde e, mais especificamente, para a escolha de um laboratório clínico. Para um paciente, a qualidade não é medida apenas pela precisão dos resultados dos exames, mas também pela forma como ele é tratado, pela confiança que o laboratório transmite e pela experiência proporcionada. Quando buscamos um exame laboratorial, queremos mais do que um laudo técnico; queremos a certeza de que estamos fazendo a escolha certa, e isso é, em grande parte, um reflexo da experiência emocional que a instituição oferece.</p>
+            <p>Como cliente, o que se percebe da qualidade é muito mais do sensorial e afetivo do que da parte técnica, que é contemplada por outro tipo de cliente: os médicos e profissionais solicitantes de exames laboratoriais. O paciente, muitas vezes, sente-se mais seguro com a experiência e o atendimento que recebe, do que com a especificidade dos exames. Isso significa que, enquanto a qualidade técnica é essencial para garantir a confiabilidade do serviço, a qualidade percebida pelo cliente está atrelada à confiança e ao conforto que ele sente ao ser atendido.</p>
+            <p>É importante ressaltar que a percepção de qualidade pode ser diferente dependendo do ponto de vista. Médicos e profissionais da saúde, por exemplo, avaliam a qualidade dos serviços laboratoriais a partir de um olhar técnico, focado em resultados precisos e na confiabilidade dos processos. Já o paciente, cliente final do serviço, tende a perceber a qualidade mais pelo acolhimento e pela segurança que o laboratório transmite. Esse é um exemplo claro de como a qualidade é algo dinâmico, que varia conforme o contexto e a interação entre as partes envolvidas.</p>
+            <p>O laboratório clínico deve assegurar que os resultados produzidos reflitam, de forma fidedigna e consistente, a situação clínica apresentada pelos pacientes, assegurando que não representem o resultado de alguma interferência no processo. A informação produzida deve satisfazer as necessidades de seus clientes e possibilitar a determinação e a realização correta de diagnóstico, tratamento e prognóstico das doenças.</p>
+
+            <h2>Gestão da Qualidade em Laboratórios: Como Garantir a Excelência?</h2>
+            <p>A gestão da qualidade em um laboratório clínico envolve a implementação de práticas que garantam a precisão dos resultados e, ao mesmo tempo, a experiência do cliente. Para isso, alguns pontos são essenciais:</p>
+            <ul>
+                <li>Desenvolver um Sistema da Qualidade baseado nas Boas Práticas de Laboratório Clínico, que promova um contínuo processo de melhoria.</li>
+                <li>Definir e implementar processos de qualidade com o total envolvimento e comprometimento dos funcionários, garantindo a obtenção de laudos corretos e confiáveis.</li>
+                <li>Fornecer treinamento e suporte contínuo para todos os funcionários, assegurando a entrega de serviços de qualidade para todos os clientes.</li>
+            </ul>
+
+            <div class="image-container">
+                <img src="https://famesp.com.br/wp-content/uploads/2016/07/c-matriculas-tecnico-analises-clinicas-famesp-selo-mec-1.jpg" alt="Capacitação Técnica">
+                <div class="figure-title">Figura 2 – Capacitação Técnica</div>
+                <div class="figure-source">Fonte: FAMESP (2016)</div>
+            </div>
+            
+            <h2>Exemplos de Mudança na Qualidade dos Serviços</h2>
+            <p>O conceito de qualidade está em constante transformação, principalmente com o impacto das redes sociais e da digitalização. Por exemplo:</p>
+            <ul>
+                <li>Um laboratório que não oferece exames online ou não tem presença digital pode ser visto como ultrapassado, pois a sociedade exige agilidade e acessibilidade.</li>
+                <li>A qualidade também está relacionada ao atendimento ao cliente. Um laboratório que oferece um serviço rápido, eficiente e transparente pode ser mais bem visto, mesmo que sua qualidade técnica não seja de ponta.</li>
+            </ul>
+
+            <div class="image-container">
+                <img src="https://www.laboranalisescacoal.com.br/arquivos_personalizados/uploads/biblioteca_imagens/banner_home_resultados_exames_online_6176a584dbad0.jpg" alt="Sistema de Resultados Online">
+                <div class="figure-title">Figura 3 – Sistema de Resultados Online</div>
+                <div class="figure-source">Fonte: Laboranálises (2025)</div>
+            </div>
+
+            <h2>Ética e Qualidade</h2>
+            <p>Em um cenário onde a qualidade está em constante evolução, a ética não pode ser deixada de lado. O caso recente envolvendo o PCS Lab Saleme, que está sendo investigado por fornecer exames laboratoriais com resultados falsos negativos para HIV, trouxe à tona a reflexão sobre ética e qualidade no setor. O laboratório foi responsável por exames que resultaram na infecção de seis pacientes transplantados, quando os órgãos de dois doadores, com resultados de HIV negativos, estavam contaminados. Isso levanta questões sérias sobre como a qualidade de um laboratório deve ser assegurada, não apenas através de processos técnicos, mas também com uma forte base ética e compromisso com os pacientes.</p>
+
+            <div class="image-container">
+                <img src="https://imagens.ebc.com.br/p-2h1sLrn3G0GIh5Pt0hNSpw83o=/754x0/smart/https://agenciabrasil.ebc.com.br/sites/default/files/thumbnails/image/2024/10/12/1000005075.jpg" alt="PCS Lab Saleme">
+                <div class="figure-title">Figura 4 – PCS Lab Saleme</div>
+                <div class="figure-source">Fonte: EBC (2025)</div>
+            </div>
+
+            <p>Esse caso é um exemplo claro de como a ética e a qualidade devem andar de mãos dadas. Quando há falhas em um serviço que afeta a vida das pessoas, as consequências podem ser desastrosas. A reflexão sobre a ética no laboratório, especialmente em serviços de saúde, é fundamental para garantir que a qualidade não se limite aos aspectos técnicos, mas também envolva responsabilidade social e compromisso com os pacientes.</p>
+            <p>Para mais detalhes sobre o caso, leia a matéria completa <a href="https://g1.globo.com/rj/rio-de-janeiro/noticia/2024/10/12/infeccao-por-hiv-em-transplantes-perguntas-e-resposta-sobre-o-caso.ghtml" target="_blank">aqui</a>.</p>
+
+            <div class="flashcards-container">
+                <h2>Flashcards - Revise os Principais Conceitos</h2>
+                <p>Clique nas perguntas abaixo para ver a resposta.</p>
+                <div class="flashcard-buttons">
+                    <button class="flashcard-button" onclick="showFlashcard(1)">1</button>
+                    <button class="flashcard-button" onclick="showFlashcard(2)">2</button>
+                    <button class="flashcard-button" onclick="showFlashcard(3)">3</button>
+                    <button class="flashcard-button" onclick="showFlashcard(4)">4</button>
+                    <button class="flashcard-button" onclick="showFlashcard(5)">5</button>
+                </div>
+
+                <div id="flashcard-1" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(1)">Como a qualidade percebida pelo paciente é diferente da qualidade técnica?</p>
+                    <p class="flashcard-answer" id="answer-1">A qualidade percebida pelo paciente está ligada à experiência afetiva, confiança e acolhimento, enquanto a qualidade técnica é avaliada por médicos e profissionais de saúde com base na precisão dos resultados e confiabilidade dos processos.</p>
+                </div>
+                <div id="flashcard-2" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(2)">Quais são os principais pilares da gestão da qualidade em um laboratório clínico?</p>
+                    <p class="flashcard-answer" id="answer-2">A gestão da qualidade se baseia no desenvolvimento de um Sistema da Qualidade, na implementação de processos com o envolvimento da equipe, e no fornecimento de treinamento e suporte contínuo para os funcionários.</p>
+                </div>
+                <div id="flashcard-3" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(3)">De que forma a digitalização influencia a percepção de qualidade em um laboratório?</p>
+                    <p class="flashcard-answer" id="answer-3">A digitalização, com a oferta de serviços online e presença nas redes sociais, é vista como um fator de qualidade, pois a sociedade exige agilidade e acessibilidade, e laboratórios que não se adaptam podem ser considerados ultrapassados.</p>
+                </div>
+                <div id="flashcard-4" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(4)">Qual o objetivo principal do laboratório clínico em relação aos resultados produzidos?</p>
+                    <p class="flashcard-answer" id="answer-4">O laboratório clínico deve garantir que os resultados sejam fidedignos e consistentes, refletindo a situação clínica do paciente sem interferências, para possibilitar um diagnóstico, tratamento e prognóstico corretos.</p>
+                </div>
+                <div id="flashcard-5" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(5)">Quais foram as consequências dos resultados falsos negativos do PCS Lab Saleme?</p>
+                    <p class="flashcard-answer" id="answer-5">Os resultados falsos negativos para HIV em doadores de órgãos resultaram na infecção de seis pacientes que receberam os transplantes, destacando a gravidade das falhas no controle de qualidade e ética.</p>
+                </div>
+            </div>
+
+            <p class="source">Fonte consultada: CHAVES, Carla D. Controle de qualidade no laboratório de análises clínicas. J. Bras. Patol. Med. Lab. [online]. 2010, vol.46, n.5, pp.352-352.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 lucas.batista.eduk@gmail.com | Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        function showFlashcard(number) {
+            // Remove a classe 'active' de todos os flashcards e botões
+            for (let i = 1; i <= 5; i++) {
+                let flashcard = document.getElementById('flashcard-' + i);
+                flashcard.classList.remove('active');
+                let button = document.querySelector('.flashcard-buttons button:nth-child(' + i + ')');
+                button.classList.remove('active');
+            }
+            // Adiciona a classe 'active' ao flashcard e botão selecionados
+            document.getElementById('flashcard-' + number).classList.add('active');
+            document.querySelector('.flashcard-buttons button:nth-child(' + number + ')').classList.add('active');
+        }
+
+        function toggleAnswer(cardNumber) {
+            const answer = document.getElementById('answer-' + cardNumber);
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Garante que o primeiro flashcard e botão estejam ativos ao carregar a página
+            showFlashcard(1);
+        });
+    </script>
+
+</body>
+</html>

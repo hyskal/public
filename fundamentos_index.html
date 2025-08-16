@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Processamento e análise das fezes - Fundamentos de Laboratório Clínico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #34495e;
+            --text-color: #555;
+            --light-text-color: #f0f0f0;
+            --background-gradient: linear-gradient(135deg, #e3f2fd, #c3e3f3);
+            --glass-background: rgba(255, 255, 255, 0.6);
+            --flashcard-background: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(255, 255, 255, 0.4);
+            --shadow-color: rgba(0, 0, 0, 0.08);
+            --glass-shadow: 0 4px 30px var(--shadow-color);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background-gradient);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header {
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: var(--glass-shadow);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        .main-container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 20px 40px;
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+            margin: 40px 20px;
+        }
+
+        section:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 24px;
+            font-weight: 700;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 5px;
+        }
+        
+        h3 {
+            color: var(--primary-color);
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 400;
+        }
+        
+        a {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        ul li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 20px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--glass-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: var(--primary-color);
+            width: 100%;
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -4px 30px var(--shadow-color);
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px var(--shadow-color);
+            display: block;
+            margin: 0 auto 10px auto;
+        }
+
+        .figure-title, .figure-source {
+            font-size: 14px;
+            color: var(--secondary-color);
+            margin: 5px 0;
+        }
+        
+        .figure-title {
+            font-weight: 600;
+        }
+        
+        .video-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .flashcards-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .flashcard {
+            display: none;
+            background: var(--flashcard-background);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px auto;
+            box-shadow: 0 4px 20px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            max-width: 600px;
+            cursor: pointer;
+        }
+
+        .flashcard:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .flashcard.active {
+            display: block;
+        }
+
+        .flashcard-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .flashcard-button {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            padding: 12px 24px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .flashcard-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .flashcard-button.active {
+            background-color: #5a6a7c;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .flashcard-question {
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 18px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .flashcard-answer {
+            display: none;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--text-color);
+            font-weight: 400;
+            font-size: 15px;
+        }
+
+        .flashcard-question:hover {
+            text-decoration: underline;
+        }
+        
+        .highlight-box {
+            background: var(--flashcard-background);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 50px;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow-color);
+        }
+        
+        .highlight-box h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .source {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-top: 40px;
+            text-align: center;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                margin: 20px;
+                padding: 20px;
+            }
+            header h1 {
+                font-size: 22px;
+            }
+            h2 {
+                font-size: 20px;
+            }
+            .flashcard-button {
+                padding: 10px 20px;
+            }
+            iframe {
+                width: 100% !important;
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Processamento e análise das fezes - Fundamentos de Laboratório Clínico</h1>
+    </header>
+
+    <div class="main-container">
+        <div class="image-container">
+            <img src="https://i.ibb.co/bjWvRFsk/20250729-082204.jpg" alt="Estudantes realizando análise microscópica do sedimento fecal">
+            <div class="figure-title">Estudantes realizando análise microscópica do sedimento fecal (CETEP/LNAB)</div>
+            <div class="figure-source">Fonte: Acervo Pessoal</div>
+        </div>
+
+        <section>
+            <h2>Introdução</h2>
+            <p>O exame parasitológico de fezes (EPF) é um dos recursos mais utilizados no diagnóstico de parasitoses intestinais. Entre as metodologias disponíveis, a técnica de sedimentação espontânea é tradicionalmente aplicada por ser simples, econômica e eficiente para a detecção de ovos, cistos e larvas.</p>
+            <p>No método clássico, a separação das estruturas parasitárias do material fecal ocorre apenas pela ação da gravidade, o que pode levar de 1 a 2 horas para completar a sedimentação. No entanto, em ambientes de rotina laboratorial, o tempo é um recurso precioso. Assim, adaptações utilizando a centrifugação são adotadas para acelerar o processo, mantendo o princípio de concentração por sedimentação, mas substituindo a gravidade pela força centrífuga.</p>
+            <p>Essa abordagem reduz significativamente o tempo de espera e, quando bem executada, preserva a sensibilidade do método original.</p>
+
+            <div class="image-container">
+                <img src="https://i.ytimg.com/vi/Q1d5qUK7wNM/maxresdefault.jpg" alt="Diluição e preparo da amostra de fezes">
+                <div class="figure-title">Figura 1 – Diluição e preparo da amostra de fezes</div>
+                <div class="figure-source">Fonte: Adaptado de [GIULIANA ZARDETO / Youtube]</div>
+            </div>
+
+            <h2>Coleta e Conservação da Amostra</h2>
+            <p>Para garantir a qualidade do resultado, a amostra deve ser coletada em recipiente limpo, seco, com tampa bem vedada e boca larga, evitando contato com urina ou água. A quantidade ideal é de aproximadamente 10 mL, incluindo porções de diferentes partes do bolo fecal.</p>
+            <p>Fezes líquidas devem ser processadas rapidamente (preferencialmente em até 1 hora) para preservar formas frágeis, enquanto amostras sólidas podem ser mantidas sob refrigeração por até 24 horas.</p>
+            <p>Sempre que possível, recomenda-se a coleta de três amostras em dias alternados, pois a eliminação de parasitas pode ser intermitente, e um único exame negativo não exclui a infecção.</p>
+            <div class="video-container">
+                <iframe width="100%" height="auto" src="https://www.youtube.com/embed/LS56mPf8DHc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <h2>O Papel da Centrifugação na Sedimentação</h2>
+            <p>Na sedimentação espontânea tradicional, a gravidade é quem faz o trabalho de separar as formas parasitárias do restante do material. Isso pode levar mais de uma hora. Ao usar a centrifugação, essa separação acontece em poucos minutos, sem perder a essência do método original.</p>
+            <p>O resultado é um sedimento mais rápido de obter e pronto para o preparo das lâminas. Aqui, um cuidado importante é que o equipamento esteja em boas condições de uso: centrífugas limpas, bem balanceadas e com velocidade adequada garantem um resultado mais confiável e seguro para quem manipula.</p>
+
+            <div class="image-container">
+                <img src="https://images.tcdn.com.br/img/img_prod/820565/centrifuga_4000_rpm_220v_lgi_scientific_cod_lgi_dlc802b_3905_1_6f86cdf739d0466c18a60e88e2a5f4a0.jpg" alt="Sobrenadante e precipitado e a centrífuga">
+                <div class="figure-title">Figura 2 – Centrífuga</div>
+                <div class="figure-source">Fonte: LGI Scientific</div>
+            </div>
+
+            <h2>Sedimentoscopia</h2>
+            <p>Para observar os parasitas, usamos solução salina e, muitas vezes, o Lugol. A salina mantém as estruturas íntegras, enquanto o Lugol colore detalhes internos, facilitando a identificação. É importante que essas soluções estejam dentro do prazo de validade e preparadas corretamente — não só para manter a qualidade da visualização, mas também para evitar interpretações equivocadas.</p>
+            <p>Lâminas e lamínulas limpas e bem conservadas ajudam a formar imagens nítidas no microscópio. Arranhões, sujeira ou bolhas podem dificultar a observação e até confundir o diagnóstico.</p>
+            <p>A leitura no microscópio começa com a objetiva de 10x, fazendo uma varredura completa para localizar possíveis estruturas parasitárias. Depois, a objetiva de 40x permite observar detalhes como forma, tamanho e organização interna.</p>
+            <p>Pequenos ajustes no condensador e no diafragma controlam a luz e o contraste, facilitando a visualização. Além disso, movimentar a lâmina de forma sistemática garante que nenhuma área fique sem ser examinada.</p>
+
+            <div class="image-container">
+                <img src="https://controllab.com/wp-content/uploads/Ascaris-lumbricoides-400x.jpg" alt="Ovo de Ascaris corado com Lugol">
+                <div class="figure-title">Figura 3 – Ovo de Ascaris lumbricoides corado com Lugol</div>
+                <div class="figure-source">Fonte: Controllab</div>
+            </div>
+
+            <h2>Controle de Qualidade</h2>
+            <p>O controle de qualidade no exame parasitológico de fezes é fundamental para garantir a precisão dos resultados e a segurança do paciente. Vários fatores influenciam a qualidade do diagnóstico, incluindo:</p>
+            
+            <ul>
+                <li><strong>Capacidade técnica do técnico:</strong> O diagnóstico parasitológico depende da habilidade do técnico em identificar corretamente os achados parasitológicos. A experiência e o conhecimento do profissional são cruciais para evitar erros de interpretação, como confundir artefatos com formas parasitárias ou não identificar formas parasitárias presentes em baixas concentrações.</li>
+                <li><strong>Manutenção dos equipamentos:</strong> A correta manutenção dos microscópios e centrífugas é essencial para garantir que as imagens obtidas sejam nítidas e as separações realizadas sejam eficazes. Microscópios desajustados ou centrífugas mal calibradas podem comprometer a qualidade do exame, resultando em diagnósticos falsos-negativos ou falhas na concentração dos parasitas.</li>
+                <li><strong>Qualidade e armazenamento dos insumos:</strong> Os reagentes utilizados, como solução salina e Lugol, devem ser de boa qualidade e armazenados corretamente. Reagentes deteriorados ou fora da validade podem prejudicar a visualização das amostras, dificultando a identificação dos parasitas. Lâminas e lamínulas também devem ser mantidas limpas e livres de qualquer contaminação.</li>
+                <li><strong>Limitação da técnica:</strong> Apesar de ser eficaz, a técnica de sedimentação com centrifugação possui limitações. Ela pode não detectar parasitas em cargas muito baixas ou em amostras muito pequenas. Além disso, o exame depende da correta preparação da amostra, e uma coleta inadequada ou demorada pode comprometer o resultado final.</li>
+            </ul>
+
+            <h2>Considerações Finais</h2>
+            <p>A técnica de sedimentação espontânea adaptada com centrifugação é prática e eficiente, mas seu sucesso depende de uma sequência de cuidados simples: coleta bem orientada, soluções em bom estado, centrífuga funcionando corretamente e atenção aos detalhes no microscópio.</p>
+            <p>Quando esses cuidados se tornam parte natural da rotina, o trabalho flui melhor, o tempo é otimizado e os resultados ganham mais segurança e confiabilidade — beneficiando não apenas o laboratório, mas principalmente o paciente.</p>
+            <p>Um exame negativo nem sempre significa ausência de parasitas. Pode ser que a carga parasitária esteja muito baixa, que o parasita não tenha sido eliminado naquela amostra ou que a quantidade de material analisada não tenha sido suficiente.</p>
+            <p>É por isso que a análise de mais de uma amostra, a repetição em dias alternados e a atenção a cada etapa — da coleta à leitura — aumentam as chances de um resultado que reflita melhor a realidade do paciente.</p>
+
+            <div class="flashcards-container">
+                <h2>Flashcards - Revise os Principais Conceitos</h2>
+                <p>Clique nas perguntas abaixo para ver a resposta.</p>
+                <div class="flashcard-buttons">
+                    <button class="flashcard-button" onclick="showFlashcard(1)">1</button>
+                    <button class="flashcard-button" onclick="showFlashcard(2)">2</button>
+                    <button class="flashcard-button" onclick="showFlashcard(3)">3</button>
+                    <button class="flashcard-button" onclick="showFlashcard(4)">4</button>
+                    <button class="flashcard-button" onclick="showFlashcard(5)">5</button>
+                </div>
+
+                <div id="flashcard-1" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(1)">Qual a importância do sobrenadante limpo no exame parasitológico de fezes?</p>
+                    <p class="flashcard-answer" id="answer-1">Um sobrenadante limpo garante que não há impurezas que possam interferir na visualização e identificação dos parasitas.</p>
+                </div>
+                <div id="flashcard-2" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(2)">Quais as vantagens de se utilizar amostras de fezes seriadas?</p>
+                    <p class="flashcard-answer" id="answer-2">A utilização de amostras de fezes seriadas aumenta a chance de detectar parasitas, já que a eliminação pode ser intermitente.</p>
+                </div>
+                <div id="flashcard-3" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(3)">O que é a varredura no microscópio e qual sua importância no exame parasitológico de fezes?</p>
+                    <p class="flashcard-answer" id="answer-3">A varredura no microscópio é a busca sistemática de estruturas parasitárias, garantindo que nenhuma área da lâmina seja deixada sem análise, aumentando as chances de detecção.</p>
+                </div>
+                <div id="flashcard-4" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(4)">Quais cuidados são importantes ao utilizar a centrífuga no processamento das amostras de fezes?</p>
+                    <p class="flashcard-answer" id="answer-4">É importante ajustar corretamente o tempo e a velocidade da centrífuga, posicionar corretamente os tubos, e garantir a segurança do operador, como abrir a centrífuga apenas quando estiver parada e verificar o visor para possíveis falhas.</p>
+                </div>
+                <div id="flashcard-5" class="flashcard">
+                    <p class="flashcard-question" onclick="toggleAnswer(5)">Qual a função do Lugol no exame parasitológico?</p>
+                    <p class="flashcard-answer" id="answer-5">O Lugol colore as estruturas parasitárias, ajudando na visualização de detalhes internos para facilitar a identificação.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Para saber mais sobre o exame parasitológico de fezes</h3>
+                <p>Leia este manual da <a href="https://firstlab.ind.br/wp-content/uploads/2021/06/GUIA-de-Parasitologia-Helmintos_Firstlab2023.1.pdf" target="_blank">Firstlab</a> para aprofundar seus conhecimentos sobre o tema.</p>
+            </div>
+
+            <p class="source">Fonte consultada: CARLI, G. A. Parasitologia clínica: seleção de métodos e técnicas de laboratório para o diagnóstico das parasitoses humanas. 2ª ed. São Paulo: Atheneu, 2007.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 lucas.batista.eduk@gmail.com | Todos os direitos reservados</p>
+    </footer>
+
+    <script>
+        function showFlashcard(number) {
+            // Remove a classe 'active' de todos os flashcards e botões
+            for (let i = 1; i <= 5; i++) {
+                let flashcard = document.getElementById('flashcard-' + i);
+                flashcard.classList.remove('active');
+                let button = document.querySelector('.flashcard-buttons button:nth-child(' + i + ')');
+                button.classList.remove('active');
+            }
+            // Adiciona a classe 'active' ao flashcard e botão selecionados
+            document.getElementById('flashcard-' + number).classList.add('active');
+            document.querySelector('.flashcard-buttons button:nth-child(' + number + ')').classList.add('active');
+        }
+
+        function toggleAnswer(cardNumber) {
+            const answer = document.getElementById('answer-' + cardNumber);
+            answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Garante que o primeiro flashcard e botão estejam ativos ao carregar a página
+            showFlashcard(1);
+        });
+    </script>
+
+</body>
+</html>
